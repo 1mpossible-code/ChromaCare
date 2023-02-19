@@ -17,3 +17,7 @@ tuples.
 From this point, the collected RGB values are evaluated in respect to what RGB values are easily
 visualized/distinguishable for CVD persons. Through these comparisons a color-blind accessibility grade is given out of
 10, and is displayed amongst all the colors listed on the website through ChromaCare's application.
+
+# Hackathon
+
+This is a project made during Hack NYU hackathon!
