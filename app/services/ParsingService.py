@@ -80,3 +80,10 @@ class ParsingService:
         else:
             # prepend "https://" to the beginning
             return "https://" + url
+
+if __name__ == '__main__':
+    url = "regex101.com"
+    pars = ParsingService(url)
+    c = pars.parse_colors()
+    print(c)
+

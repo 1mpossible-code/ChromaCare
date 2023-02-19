@@ -1,24 +1,62 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8">
-    <title>ColorCheck+</title>
-  </head>
-  <body>
-    <header>
-      <h1>ChromaCare</h1>
-      <nav>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ChromaCare</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+</head>
+<body>
+
+<header>
+    <h1>ChromaCare</h1>
+    <nav>
         <ul>
-          <li><a href="#">Information</a></li>
-          <li><a href="#">How It Works</a></li>
+            <li><a href="#">Information</a></li>
+            <li><a href="#">How It Works</a></li>
         </ul>
-      </nav>
-    </header>
-    <main>
-      <section>
+    </nav>
+</header>
+<main>
+    <section>
         <h2>Information</h2>
-        <p>Welcome to ChromaCare! We're here to help make the web more inclusive for colorblind individuals by providing ratings and suggestions to improve color accessibility on websites. Our tool evaluates the color contrast and brightness of your website's palette and provides actionable recommendations to make it more accessible for all users.</p>
-      </section>
-      <section>
+        <p>Welcome to ChromaCare! We're here to help make the web more inclusive for colorblind individuals by providing
+            ratings and suggestions to improve color accessibility on websites. Our tool evaluates the color contrast
+            and brightness of your website's palette and provides actionable recommendations to make it more accessible
+            for all users.</p>
+    </section>
+    <section>
         <h2>How It Works</h2>
-        <p>To get started, simply enter the URL of the website you want to check. Our tool will analyze the website's color palette and provide a rating for its accessibility. You'll then receive recommendations for how to improve the website's color scheme, such as increasing contrast or adjusting the color saturation. 
+        <p>To get started, simply enter the URL of the website you want to check. Our tool will analyze the website's
+            color palette and provide a rating for its accessibility.</p>
+    </section>
+    <section>
+        <h2>Try it out!</h2>
+        <form action="" method="post">
+            <label for="url">Url</label>
+            <input type="text" id="url" name="url">
+            <input type="submit">
+        </form>
+    </section>
+    {% if errors %}
+    <section>
+        <p>Error: {{errors[0]}}</p>
+    </section>
+    {% endif %}
+    {% if colors_rated %}
+    <section>
+        <h2>Results for {{url}}</h2>
+        {% for color in colors_rated%}
+        <p>
+        <div style="width: 50px; height: 50px; background-color: {{color[0]}};"></div>
+        <span>{{color[0]}}</span> - <span>{{color[1]}}</span></p>
+        {% endfor %}
+        <p>Average - {{avg}}</p>
+        {% endif%}
+    </section>
+</main>
+
+</body>
+</html>

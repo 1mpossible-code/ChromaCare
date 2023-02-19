@@ -3,6 +3,7 @@ This module provides a service to convert hex and rdga color codes.
 
 """
 
+
 class ColorConversion:
     """
     ColorConversion coverts hex and rgba codes.
@@ -23,11 +24,11 @@ class ColorConversion:
             hex_value = color.lstrip("#")
             if len(hex_value) == 3:
                 hex_value = "".join([x * 2 for x in hex_value])
-            rgb_tuple = tuple(int(hex_value[i:i+2], 16) for i in (0, 2, 4))
+            rgb_tuple = tuple(int(hex_value[i:i + 2], 16) for i in (0, 2, 4))
         elif color.startswith("rgba"):
             # Convert rgba to rgb
             rgba_list = color[5:-1].split(",")
-            rgba_tuple = tuple(map(int, rgba_list))
+            rgba_tuple = tuple(map(float, rgba_list))
 
             r, g, b, a = rgba_tuple
             r = int((1 - a) * 255 + a * r)
@@ -40,8 +41,3 @@ class ColorConversion:
             rgb_tuple = tuple(map(int, rgb_list))
 
         return rgb_tuple
-
-
-converter = ColorConversion()
-
-print(converter.convert("#eee"))
