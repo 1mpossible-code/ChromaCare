@@ -3,6 +3,7 @@ from flask import render_template
 from Services.ParsingService import ParsingService
 from Services.ColorConversion import ColorConversion
 from Services.RatingColorService import RatingColorService
+import re
 
 app = Flask(__name__)
 
@@ -33,7 +34,7 @@ def hello_world():
                 url = parsingService.url
             return render_template("index.html", colors_rated=rated, avg=avg_rating, url=url, errors=errors)
         except Exception:
-            errors.append("Unexpected error. Please check if the url of the website you sent is correct")
+            errors.append("Unexpected error 😖. Please check if the URL is correct")
     return render_template("index.html", errors=errors)
 
 

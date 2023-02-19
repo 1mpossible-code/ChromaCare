@@ -3,10 +3,121 @@
     margin: 0;
     box-sizing: border-box;
     font-family: "Open Sans", sans-serif;
-    font-size: 20px;
+    font-size: 28px;
+}
+
+main {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+header {
+    padding-top: 25px;
 }
 
 h1 {
     text-align: center;
+    font-size: 48px;
+    margin-bottom: 25px;
+    margin-top: 25px;
+}
+
+h2 {
+    text-align: center;
     font-size: 40px;
+    margin-bottom: 25px;
+}
+
+h2 a {
+    font-size: 40px;
+}
+
+.avg {
+    font-size: 48px;
+    color: darkblue;
+    text-decoration: underline;
+}
+
+.color-box {
+    float: left;
+}
+
+form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.url {
+    width: 400px;
+    height: 60px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid silver;
+    margin-bottom: 25px;
+}
+
+.submit {
+    width: 150px;
+    height: 40px;
+    border: 1px solid silver;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.submit:hover {
+    background-color: darkcyan;
+    color: white;
+}
+
+.table {
+    border-collapse: collapse;
+    width: 50%;
+    margin: 0 auto 20px;
+}
+
+td, th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+td {
+    text-align: center;
+}
+
+.color-box {
+    margin: 0 auto;
+    border: 1px solid silver;
+}
+.wrap {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+tr {
+    transition: .3s;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #ddd;
+}
+
+th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+}
+
+.result {
+    font-size: 28px;
+    margin-bottom: 50px;
+    text-align: center;
 }

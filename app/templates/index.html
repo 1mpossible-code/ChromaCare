@@ -10,52 +10,84 @@
 </head>
 <body>
 
-<header>
-    <h1>ChromaCare</h1>
-    <nav>
-        <ul>
-            <li><a href="#">Information</a></li>
-            <li><a href="#">How It Works</a></li>
-        </ul>
-    </nav>
-</header>
 <main>
+    <header>
+        <h1>ChromaCare</h1>
+    </header>
+    <br>
     <section>
-        <h2>Information</h2>
+        <h2>Hello 👋</h2>
         <p>Welcome to ChromaCare! We're here to help make the web more inclusive for colorblind individuals by providing
             ratings and suggestions to improve color accessibility on websites. Our tool evaluates the color contrast
             and brightness of your website's palette and provides actionable recommendations to make it more accessible
             for all users.</p>
     </section>
+    <br>
     <section>
-        <h2>How It Works</h2>
+        <h2>How It Works 👷‍</h2>
         <p>To get started, simply enter the URL of the website you want to check. Our tool will analyze the website's
             color palette and provide a rating for its accessibility.</p>
     </section>
+    <br>
     <section>
-        <h2>Try it out!</h2>
-        <form action="" method="post">
-            <label for="url">Url</label>
-            <input type="text" id="url" name="url">
-            <input type="submit">
+        <h2 id="try">Try it out! 🔬</h2>
+        <form action="#try" method="post">
+            <div>
+                <input class="url" type="text" id="url" name="url" placeholder="Your url goes here..." required>
+            </div>
+            <div>
+                <input class="submit" type="submit" placeholder="Check website!">
+            </div>
         </form>
     </section>
+
     {% if errors %}
+    <br>
     <section>
-        <p>Error: {{errors[0]}}</p>
+        <h2>Error 🛑</h2>
+        <p class="result">{{errors[0]}}</p>
     </section>
+
     {% endif %}
     {% if colors_rated %}
-    <section>
-        <h2>Results for {{url}}</h2>
-        {% for color in colors_rated%}
-        <p>
-        <div style="width: 50px; height: 50px; background-color: {{color[0]}};"></div>
-        <span>{{color[0]}}</span> - <span>{{color[1]}}</span></p>
-        {% endfor %}
-        <p>Average - {{avg}}</p>
-        {% endif%}
+    <br>
+    <section id="results">
+        <h2>Results for <a href="{{url}}" target="_blank">{{url}}</a> ✅</h2>
+        <table class="table">
+            <tr>
+                <th>Preview</th>
+                <th>Color code on your website</th>
+                <th>Score of this color</th>
+            </tr>
+            {% for color in colors_rated%}
+            <tr>
+                <td>
+                    <div class="wrap">
+                        <div class="color-box" style="width: 50px; height: 50px; background-color: {{color[0]}};"></div>
+                    </div>
+                </td>
+                <td>{{color[0]}}</td>
+                <td>{{color[1]}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <h2>Average score for your website is <span class="avg">{{avg}}</span> 🏅</h2>
+        {% if avg > 9 %}
+        <p class="result">Yor score is very nice! 🏆 Thank you for caring about color-blind people!</p>
+        {% elif avg > 7 %}
+        <p class="result">Yor score is not bad! 🥇 Thank you for caring about color-blind people!</p>
+        {% elif avg > 5 %}
+        <p class="result">We think you can do better! 🥈 Thank you for caring about color-blind people!</p>
+        {% elif avg > 3 %}
+        <p class="result">Please improve your score as soon as possible! 🥉 Thank you for caring about color-blind
+            people!</p>
+        {% else %}
+        <p class="result">Please think about color-blind people and improve your score!!! 😖 Thank you for caring about
+            color-blind
+            people!</p>
+        {% endif %}
     </section>
+    {% endif%}
 </main>
 
 </body>
