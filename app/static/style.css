@@ -6,6 +6,10 @@
     font-size: 28px;
 }
 
+footer {
+    text-align: center;
+}
+
 main {
     width: 1200px;
     margin: 0 auto;
