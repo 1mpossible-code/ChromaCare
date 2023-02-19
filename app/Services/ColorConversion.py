@@ -7,34 +7,41 @@ class ColorConversion:
     """
     ColorConversion coverts hex and rgba codes.
     """
-    @staticmethod
-    def hex_to_rgb(hex_code):
-        """
-        Converts hex to rgb
-        :param string hex_code: hex code of color as string
-        :return: returns rgb code as a tuple
-        """
-        hex_code = hex_code.lstrip('#')
-        return tuple(int(hex_code[i:i+2], 16) for i in (0, 2, 4))
 
     @staticmethod
-    def hex_to_rgba(hex_code, alpha):
+    def convert(color):
         """
-        Converts hex to rgba
-        :param string hex_code: hex color code as string
-        :param float alpha: a value of rgba as float
-        :return: returns rgba code as a tuple
+        Converts color code (hex, rgba, rgb) to rgb
+        :param color: color code (hex, rgba, rgb)
+        :type color: str
+        :return: rgb code as tuple
         """
-        hex_code = hex_code.lstrip('#')
-        return tuple(int(hex_code[i:i+2], 16) for i in (0, 2, 4)) + (alpha,)
+        rgb_tuple = None
 
-    @staticmethod
-    def rgba_to_rgb(rgba_code):
-        """
-        Converts rgba to rgb.
-        :param string rgba_code: the rgba color code as string
-        :return: a tuple representing the rgb color values
-        """
-        rgba_values = rgba_code[5:-1]
-        r, g, b, _ = [int(value) for value in rgba_values.split(',')]
-        return (r, g, b)
+        if color.startswith("#"):
+            # Convert hex to rgb
+            hex_value = color.lstrip("#")
+            if len(hex_value) == 3:
+                hex_value = "".join([x * 2 for x in hex_value])
+            rgb_tuple = tuple(int(hex_value[i:i+2], 16) for i in (0, 2, 4))
+        elif color.startswith("rgba"):
+            # Convert rgba to rgb
+            rgba_list = color[5:-1].split(",")
+            rgba_tuple = tuple(map(int, rgba_list))
+
+            r, g, b, a = rgba_tuple
+            r = int((1 - a) * 255 + a * r)
+            g = int((1 - a) * 255 + a * g)
+            b = int((1 - a) * 255 + a * b)
+            rgb_tuple = (r, g, b)
+        elif color.startswith("rgb"):
+            # Convert rgb to tuple
+            rgb_list = color[4:-1].split(",")
+            rgb_tuple = tuple(map(int, rgb_list))
+
+        return rgb_tuple
+
+
+converter = ColorConversion()
+
+print(converter.convert("#eee"))
