@@ -64,7 +64,7 @@ class ParsingService:
         if href.startswith("http"):
             # link is already complete
             return href
-        elif href.startswith("../") or href.startswith("./") or href.startswith("/"):
+        elif href.startswith("../") or href.startswith("./") or href.startswith("/") or href[0]:
             # link is shortened
             full_link = self.url + '/' + href
             return full_link
